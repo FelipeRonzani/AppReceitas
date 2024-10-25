@@ -31,6 +31,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun validateLogin(email: String, password: String): Boolean {
-        return email == "user@example.com" && password == "password123"
+        return email == "email@exemplo.com" && password == "123"
     }
 }
