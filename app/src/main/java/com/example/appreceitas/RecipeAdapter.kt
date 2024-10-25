@@ -7,10 +7,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.appreceitas.R
 
-class RecipeAdapter(private var recipeList: List<Recipe>, private val onItemClick: (Recipe) -> Unit) : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
+class RecipeAdapter(private val recipes: List<Recipe>) : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
 
     class RecipeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val recipeNameTextView: TextView = itemView.findViewById(R.id.recipeNameTextView)
+        val title: TextView = itemView.findViewById(R.id.recipeNameTextView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
@@ -19,19 +19,11 @@ class RecipeAdapter(private var recipeList: List<Recipe>, private val onItemClic
     }
 
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
-        val recipe = recipeList[position]
-        holder.recipeNameTextView.text = recipe.name
-        holder.itemView.setOnClickListener {
-            onItemClick(recipe)
-        }
+        val recipe = recipes[position]
+        holder.title.text = recipe.name
     }
 
     override fun getItemCount(): Int {
-        return recipeList.size
-    }
-
-    fun updateList(newList: List<Recipe>) {
-        recipeList = newList // Agora isso é válido
-        notifyDataSetChanged() // Notifica o RecyclerView sobre a mudança
+        return recipes.size
     }
 }

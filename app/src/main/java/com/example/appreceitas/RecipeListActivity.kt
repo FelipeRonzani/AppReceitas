@@ -21,14 +21,14 @@ class RecipeListActivity : AppCompatActivity() {
             Recipe("Torta de Maçã", listOf("Maçã", "Açúcar", "Farinha"), listOf("Prepare a massa", "Coloque a maçã", "Asse"), "1 hora")
         )
 
-        val adapter = RecipeAdapter(recipes) { selectedRecipe ->
+        val adapter = RecipeAdapter(recipes) /*{ selectedRecipe ->
             val intent = Intent(this, RecipeDetailActivity::class.java)
             intent.putExtra("RECIPE_NAME", selectedRecipe.name)
             intent.putStringArrayListExtra("INGREDIENTS", ArrayList(selectedRecipe.ingredients))
             intent.putStringArrayListExtra("PREPARATION_STEPS", ArrayList(selectedRecipe.preparationSteps))
             intent.putExtra("PREP_TIME", selectedRecipe.prepTime)
             startActivity(intent)
-        }
+        }*/
 
         recipeRecyclerView.adapter = adapter
     }

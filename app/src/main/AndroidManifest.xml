@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.appreceitas">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -20,8 +19,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.example.appreceitas.RecipeListActivity" />
         <activity android:name="com.example.appreceitas.SearchRecipeActivity" />
+        <activity android:name="com.example.appreceitas.RecipeListActivity" />
         <activity android:name="com.example.appreceitas.RecipeDetailActivity" />
 
     </application>
