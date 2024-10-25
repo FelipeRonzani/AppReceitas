@@ -1,4 +1,4 @@
-package com.appreceitas
+package com.example.appreceitas
 
 data class Recipe(
     val name: String,

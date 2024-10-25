@@ -1,8 +1,9 @@
-package com.appreceitas
+package com.example.appreceitas
 
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.appreceitas.R
 
 class RecipeDetailActivity : AppCompatActivity() {
 

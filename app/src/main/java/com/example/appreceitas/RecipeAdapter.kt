@@ -1,10 +1,11 @@
-package com.appreceitas
+package com.example.appreceitas
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.appreceitas.R
 
 class RecipeAdapter(private var recipeList: List<Recipe>, private val onItemClick: (Recipe) -> Unit) : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
 

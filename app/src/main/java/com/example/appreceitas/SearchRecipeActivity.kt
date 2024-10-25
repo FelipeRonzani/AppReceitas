@@ -1,4 +1,4 @@
-package com.appreceitas
+package com.example.appreceitas
 
 import android.os.Bundle
 import android.text.Editable
@@ -7,6 +7,7 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.appreceitas.R
 
 class SearchRecipeActivity : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package com.appreceitas
+package com.example.appreceitas
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.appreceitas.R
 
 class LoginActivity : AppCompatActivity() {
 
@@ -25,7 +26,7 @@ class LoginActivity : AppCompatActivity() {
                 val intent = Intent(this, RecipeListActivity::class.java)
                 startActivity(intent)
             } else {
-                Toast.makeText(this, "Invalid credentials", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Credênciais Inválidas!", Toast.LENGTH_SHORT).show()
             }
         }
     }

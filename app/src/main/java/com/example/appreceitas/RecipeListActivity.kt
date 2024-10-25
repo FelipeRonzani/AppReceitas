@@ -1,10 +1,11 @@
-package com.appreceitas
+package com.example.appreceitas
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.appreceitas.R
 
 class RecipeListActivity : AppCompatActivity() {
 
