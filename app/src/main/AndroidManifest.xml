@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppReceitas">
 
-        <activity android:name=".LoginActivity"
+        <activity android:name="com.example.appreceitas.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,9 +20,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".RecipeListActivity" />
-        <activity android:name=".SearchRecipeActivity" />
-        <activity android:name=".RecipeDetailActivity" />
+        <activity android:name="com.example.appreceitas.RecipeListActivity" />
+        <activity android:name="com.example.appreceitas.SearchRecipeActivity" />
+        <activity android:name="com.example.appreceitas.RecipeDetailActivity" />
 
     </application>
 </manifest>
