@@ -2,45 +2,37 @@ package com.example.appreceitas
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.appreceitas.R
+import com.example.appreceitas.data.RecipeRepository
 
 class RecipeListActivity : AppCompatActivity() {
 
-    private lateinit var dbHelper: RecipeDatabaseHelper
+    private lateinit var recipeAdapter: RecipeAdapter
+    private val recipeViewModel: RecipeViewModel by viewModels {
+        RecipeViewModelFactory(RecipeRepository(RecipeDatabase.getDatabase(this).recipeDao()))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recipe_list)
 
-        dbHelper = RecipeDatabaseHelper(this)
-
-        // Insere as receitas iniciais, se necessário
-        dbHelper.insertInitialRecipes()
-
-        // Configura o RecyclerView para exibir as receitas
-        val recipeRecyclerView = findViewById<RecyclerView>(R.id.recipeRecyclerView)
         recipeRecyclerView.layoutManager = LinearLayoutManager(this)
-
-        val recipes = dbHelper.getRecipes()
-        val adapter = RecipeAdapter(recipes) { selectedRecipe ->
+        
+        recipeAdapter = RecipeAdapter(emptyList()) { recipe ->
             val intent = Intent(this, RecipeDetailActivity::class.java).apply {
-                putExtra("RECIPE_NAME", selectedRecipe.name)
-                putStringArrayListExtra("INGREDIENTS", ArrayList(selectedRecipe.ingredients))
-                putStringArrayListExtra("PREPARATION_STEPS", ArrayList(selectedRecipe.preparationSteps))
-                putExtra("PREP_TIME", selectedRecipe.prepTime)
+                putExtra("RECIPE_ID", recipe.id)
             }
             startActivity(intent)
         }
-        recipeRecyclerView.adapter = adapter
+        
+        recipeRecyclerView.adapter = recipeAdapter
 
-        // Configuração do botão de pesquisa
-        val searchButton = findViewById<Button>(R.id.searchButton)
-        searchButton.setOnClickListener {
-            val intent = Intent(this, SearchRecipeActivity::class.java)
-            startActivity(intent)
+        // Obter receitas do ViewModel e atualizar o adapter
+        recipeViewModel.getAllRecipes { recipes ->
+            recipeAdapter.updateData(recipes)
         }
     }
 }

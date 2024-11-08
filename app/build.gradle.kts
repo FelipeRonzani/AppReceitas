@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application") version libs.versions.agp
     id("org.jetbrains.kotlin.android") version libs.versions.kotlin
+    id("kotlin-kapt")
 }
 
 android {
@@ -45,6 +46,12 @@ dependencies {
 
     // Kotlin Standard Library
     implementation(libs.kotlin.stdlib)
+
+    // Room Dependencies
+    implementation("androidx.room:room-runtime:2.6.1")
+    implementation(libs.androidx.room.common) // Room Runtime
+    kapt("androidx.room:room-compiler:2.6.1") // Room Compiler (kapt)
+    implementation("androidx.room:room-ktx:2.6.1")
 
     // Unit Testing
     testImplementation(libs.junit)

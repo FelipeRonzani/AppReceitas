@@ -19,9 +19,12 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.example.appreceitas.SearchRecipeActivity" />
-        <activity android:name="com.example.appreceitas.RecipeListActivity" />
-        <activity android:name="com.example.appreceitas.RecipeDetailActivity" />
+        <activity android:name="com.example.appreceitas.SearchRecipeActivity"
+            android:exported="true"/>
+        <activity android:name="com.example.appreceitas.RecipeListActivity"
+            android:exported="true"/>
+        <activity android:name="com.example.appreceitas.RecipeDetailActivity"
+            android:exported="true"/>
 
     </application>
 </manifest>
