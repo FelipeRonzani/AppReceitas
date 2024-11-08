@@ -10,6 +10,8 @@ import com.example.appreceitas.data.RecipeRepository
 
 class RecipeListActivity : AppCompatActivity() {
 
+
+    private lateinit var recipeRecyclerView: Any
     private lateinit var recipeAdapter: RecipeAdapter
     private val recipeViewModel: RecipeViewModel by viewModels {
         RecipeViewModelFactory(RecipeRepository(RecipeDatabase.getDatabase(this).recipeDao()))
@@ -18,7 +20,7 @@ class RecipeListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recipe_list)
-
+        
         recipeRecyclerView.layoutManager = LinearLayoutManager(this)
         
         recipeAdapter = RecipeAdapter(emptyList()) { recipe ->

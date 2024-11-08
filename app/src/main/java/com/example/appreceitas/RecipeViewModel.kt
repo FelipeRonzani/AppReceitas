@@ -25,4 +25,8 @@ class RecipeViewModel(private val repository: RecipeRepository) : ViewModel() {
             onResult(repository.searchRecipes(query))
         }
     }
+
+    fun getRecipeById(recipeId: Int, any: Any) {
+
+    }
 }

@@ -6,7 +6,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.appreceitas.data.Recipe
 import com.example.appreceitas.data.RecipeRepository
-import com.example.appreceitas.RecipeDatabase
 import com.appreceitas.R
 
 class RecipeDetailActivity : AppCompatActivity() {
@@ -24,9 +23,7 @@ class RecipeDetailActivity : AppCompatActivity() {
         val recipeId = intent.getIntExtra("RECIPE_ID", -1)
         if (recipeId != -1) {
             // Chamar o método do ViewModel para buscar a receita pelo ID
-            recipeViewModel.getRecipeById(recipeId) { recipe ->
-                displayRecipeDetails(recipe)
-            }
+            recipeViewModel.getRecipeById(recipeId, ::displayRecipeDetails)
         }
     }
 
@@ -37,3 +34,4 @@ class RecipeDetailActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.recipeStepsTextView).text = "Modo de Preparo:\n${recipe.preparationSteps}"
     }
 }
+
