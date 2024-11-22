@@ -3,33 +3,42 @@ package com.example.appreceitas
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.appreceitas.R
-import com.example.appreceitas.data.RecipeRepository
+import com.example.appreceitas.adapters.RecipeAdapter
+import com.example.appreceitas.data.DataStore
+import com.example.appreceitas.databinding.ActivitySearchRecipeBinding
 
 class SearchRecipeActivity : AppCompatActivity() {
 
-    private val recipeViewModel: RecipeViewModel by viewModels {
-        RecipeViewModelFactory(RecipeRepository(RecipeDatabase.getDatabase(this).recipeDao()))
-    }
-
+    private lateinit var dataStore: DataStore
     private lateinit var adapter: RecipeAdapter
+    private lateinit var binding: ActivitySearchRecipeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_search_recipe)
 
-        searchRecyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = RecipeAdapter(emptyList()) { /* Navegar para detalhes da receita */ }
-        searchRecyclerView.adapter = adapter
+        // Configurar View Binding
+        binding = ActivitySearchRecipeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        searchEditText.addTextChangedListener(object : TextWatcher {
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                recipeViewModel.searchRecipes(s.toString()) { recipes ->
-                    adapter.updateData(recipes)
+        dataStore = DataStore(this)
+
+        // Configurar RecyclerView
+        binding.searchRecyclerView.layoutManager = LinearLayoutManager(this)
+        adapter = RecipeAdapter(emptyList()) { /* Implementar clique */ }
+        binding.searchRecyclerView.adapter = adapter
+
+        // Configurar TextWatcher para pesquisa
+        binding.searchEditText.addTextChangedListener(object : TextWatcher {
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val filteredRecipes = dataStore.getRecipes().filter {
+                    it.name.contains(s.toString(), ignoreCase = true)
                 }
+                adapter = RecipeAdapter(filteredRecipes) { recipe ->
+                    // Navegar para a tela de detalhes da receita
+                }
+                binding.searchRecyclerView.adapter = adapter
             }
 
             override fun afterTextChanged(s: Editable?) {}

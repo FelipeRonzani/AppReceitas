@@ -1,45 +1,47 @@
 package com.example.appreceitas
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.appreceitas.R
+import com.example.appreceitas.data.DataStore
+import com.example.appreceitas.data.User
+import com.example.appreceitas.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
 
+    private lateinit var dataStore: DataStore
+    private lateinit var binding: ActivityLoginBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
 
-        val emailEditText = findViewById<EditText>(R.id.emailEditText)
-        val passwordEditText = findViewById<EditText>(R.id.passwordEditText)
-        val loginButton = findViewById<Button>(R.id.loginButton)
+        // Configurar o View Binding
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        loginButton.setOnClickListener {
-            val email = emailEditText.text.toString()
-            val password = passwordEditText.text.toString()
+        dataStore = DataStore(this)
 
-            if (validateLogin(email, password)) {
-                // Navegar para a tela de lista de receitas
-                val intent = Intent(this, RecipeListActivity::class.java)
-                startActivity(intent)
+        // Configurar ações dos botões
+        binding.loginButton.setOnClickListener {
+            val email = binding.emailEditText.text.toString()
+            val password = binding.passwordEditText.text.toString()
+
+            val user = dataStore.getUsers().find { it.email == email && it.password == password }
+            if (user != null) {
+                startActivity(Intent(this, RecipeListActivity::class.java))
                 finish()
             } else {
                 Toast.makeText(this, "Credenciais inválidas", Toast.LENGTH_SHORT).show()
             }
         }
-    }
 
-    private fun validateLogin(email: String, password: String): Boolean {
-        val sharedPref = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
-        val storedEmail = sharedPref.getString("email", "user@example.com")
-        val storedPassword = sharedPref.getString("password", "password123")
-        
-        // Verifica se as credenciais inseridas são válidas
-        return email == storedEmail && password == storedPassword
+        binding.registerButton.setOnClickListener {
+            val email = binding.emailEditText.text.toString()
+            val password = binding.passwordEditText.text.toString()
+
+            dataStore.addUser(User(email, password))
+            Toast.makeText(this, "Usuário registrado com sucesso", Toast.LENGTH_SHORT).show()
+        }
     }
 }

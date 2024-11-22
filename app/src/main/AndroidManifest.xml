@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,7 +9,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppReceitas">
 
-        <activity android:name="com.example.appreceitas.LoginActivity"
+        <!-- Tela de Login -->
+        <activity
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,12 +19,20 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.example.appreceitas.SearchRecipeActivity"
-            android:exported="true"/>
-        <activity android:name="com.example.appreceitas.RecipeListActivity"
-            android:exported="true"/>
-        <activity android:name="com.example.appreceitas.RecipeDetailActivity"
-            android:exported="true"/>
+        <!-- Tela Inicial de Lista de Receitas -->
+        <activity
+            android:name=".RecipeListActivity"
+            android:exported="true" />
+
+        <!-- Tela de Pesquisa de Receitas -->
+        <activity
+            android:name=".SearchRecipeActivity"
+            android:exported="true" />
+
+        <!-- Tela de Detalhes da Receita -->
+        <activity
+            android:name=".RecipeDetailActivity"
+            android:exported="true" />
 
     </application>
 </manifest>

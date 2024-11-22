@@ -1,0 +1,25 @@
+{
+    "users": [
+      {
+        "email": "user@example.com",
+        "password": "password123"
+      }
+    ],
+    "recipes": [
+      {
+        "id": 1,
+        "name": "Bolo de Cenoura",
+        "image": "https://via.placeholder.com/150",
+        "ingredients": "Cenoura, Açúcar, Farinha, Ovos, Óleo, Chocolate",
+        "preparation": "1. Misture os ingredientes. 2. Asse a massa."
+      },
+      {
+        "id": 2,
+        "name": "Torta de Maçã",
+        "image": "https://via.placeholder.com/150",
+        "ingredients": "Maçã, Açúcar, Farinha, Manteiga, Canela",
+        "preparation": "1. Prepare a massa. 2. Adicione as maçãs. 3. Asse a torta."
+      }
+    ]
+  }
+  

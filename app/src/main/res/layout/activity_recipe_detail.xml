@@ -1,42 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RecipeDetailActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/recipeNameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nome Receita"
-        android:textStyle="bold"
-        android:textSize="24sp"
+    <ImageView
+        android:id="@+id/recipeImageView"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        android:scaleType="centerCrop"
+        android:contentDescription="Imagem da receita" />
 
     <TextView
-        android:id="@+id/ingredientsTextView"
-        android:layout_width="wrap_content"
+        android:id="@+id/recipeNameTextView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Ingredientes:"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/recipeImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp"
+        android:text="Nome da Receita"
+        android:textSize="24sp"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/recipeIngredientsTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/recipeNameTextView"
         app:layout_constraintStart_toStartOf="parent"
-        android:paddingStart="16dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp"
+        android:text="Ingredientes"
+        android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/recipeStepsTextView"
-        android:layout_width="wrap_content"
+        android:id="@+id/recipePreparationTextView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Modo de Preparo:"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/ingredientsTextView"
+        app:layout_constraintTop_toBottomOf="@id/recipeIngredientsTextView"
         app:layout_constraintStart_toStartOf="parent"
-        android:paddingStart="16dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp"
+        android:text="Modo de Preparo"
+        android:textSize="16sp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
