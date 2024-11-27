@@ -2,7 +2,6 @@ package com.example.appreceitas
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
 import com.example.appreceitas.data.DataStore
 import com.example.appreceitas.databinding.ActivityRecipeDetailBinding
 
@@ -29,7 +28,10 @@ class RecipeDetailActivity : AppCompatActivity() {
             binding.recipeNameTextView.text = it.name
             binding.recipeIngredientsTextView.text = "Ingredientes: ${it.ingredients}"
             binding.recipePreparationTextView.text = "Modo de Preparo: ${it.preparation}"
-            Glide.with(this).load(it.image).into(binding.recipeImageView)
+
+            // Carregar a imagem do drawable
+            val imageResId = resources.getIdentifier(it.image, "drawable", packageName)
+            binding.recipeImageView.setImageResource(imageResId)
         }
     }
 }

@@ -9,16 +9,37 @@
       {
         "id": 1,
         "name": "Bolo de Cenoura",
-        "image": "https://via.placeholder.com/150",
+        "image": "bolo_cenoura",
         "ingredients": "Cenoura, Açúcar, Farinha, Ovos, Óleo, Chocolate",
         "preparation": "1. Misture os ingredientes. 2. Asse a massa."
       },
       {
         "id": 2,
         "name": "Torta de Maçã",
-        "image": "https://via.placeholder.com/150",
+        "image": "torta_maca",
         "ingredients": "Maçã, Açúcar, Farinha, Manteiga, Canela",
         "preparation": "1. Prepare a massa. 2. Adicione as maçãs. 3. Asse a torta."
+      },
+      {
+        "id": 3,
+        "name": "Pão de Queijo",
+        "image": "pao_de_queijo",
+        "ingredients": "Polvilho doce, Queijo ralado, Leite, Ovos, Óleo, Sal",
+        "preparation": "1. Misture os ingredientes em uma tigela. 2. Forme bolinhas com a massa. 3. Asse em forno preaquecido a 180°C por cerca de 25 minutos."
+      },
+      {
+        "id": 4,
+        "name": "Brigadeiro",
+        "image": "brigadeiro",
+        "ingredients": "Leite condensado, Chocolate em pó, Manteiga, Granulado",
+        "preparation": "1. Misture o leite condensado, o chocolate em pó e a manteiga em uma panela. 2. Cozinhe em fogo baixo, mexendo sempre, até desgrudar do fundo. 3. Deixe esfriar, faça bolinhas e passe no granulado."
+      },
+      {
+        "id": 5,
+        "name": "Lasanha à Bolonhesa",
+        "image": "lasanha_bolonhesa",
+        "ingredients": "Massa de lasanha, Molho de tomate, Carne moída, Queijo mussarela, Presunto, Queijo parmesão",
+        "preparation": "1. Cozinhe a carne moída com o molho de tomate. 2. Monte camadas de molho, massa, presunto e queijo. 3. Finalize com queijo parmesão e asse por 30 minutos em forno preaquecido a 200°C."
       }
     ]
   }

@@ -13,7 +13,6 @@ constraintlayout = "2.1.4"
 recyclerview = "1.2.1"
 activity = "1.9.2"
 gson = "2.10.1"
-glide = "4.15.1"
 material = "1.12.0"
 
 [libraries]
@@ -29,7 +28,6 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
-glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 [plugins]

@@ -10,30 +10,36 @@ import com.example.appreceitas.databinding.ActivityRecipeListBinding
 
 class RecipeListActivity : AppCompatActivity() {
 
-    private lateinit var dataStore: DataStore
     private lateinit var binding: ActivityRecipeListBinding
+    private lateinit var dataStore: DataStore
+    private lateinit var adapter: RecipeAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Configurar o View Binding
+        // Configurar View Binding
         binding = ActivityRecipeListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         dataStore = DataStore(this)
 
-        // Configurar o RecyclerView
+        // Configurar RecyclerView
         binding.recipeRecyclerView.layoutManager = LinearLayoutManager(this)
-
-        // Obter receitas do DataStore
         val recipes = dataStore.getRecipes()
 
-        val adapter = RecipeAdapter(recipes) { recipe ->
+        adapter = RecipeAdapter(recipes) { recipe ->
+            // Abrir a tela de detalhes da receita
             val intent = Intent(this, RecipeDetailActivity::class.java)
             intent.putExtra("RECIPE_ID", recipe.id)
             startActivity(intent)
         }
-
         binding.recipeRecyclerView.adapter = adapter
+
+        // Configurar botão de pesquisa
+        binding.searchButton.setOnClickListener {
+            // Iniciar a SearchRecipeActivity
+            val intent = Intent(this, SearchRecipeActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

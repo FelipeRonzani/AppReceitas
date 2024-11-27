@@ -36,7 +36,9 @@ class SearchRecipeActivity : AppCompatActivity() {
                     it.name.contains(s.toString(), ignoreCase = true)
                 }
                 adapter = RecipeAdapter(filteredRecipes) { recipe ->
-                    // Navegar para a tela de detalhes da receita
+                    val intent = Intent(this, RecipeDetailActivity::class.java)
+                    intent.putExtra("RECIPE_ID", recipe.id)
+                    startActivity(intent)
                 }
                 binding.searchRecyclerView.adapter = adapter
             }

@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.appreceitas.R
 import com.example.appreceitas.data.Recipe
 
@@ -28,7 +27,13 @@ class RecipeAdapter(
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
         val recipe = recipes[position]
         holder.recipeName.text = recipe.name
-        Glide.with(holder.itemView.context).load(recipe.image).into(holder.recipeImage)
+        
+        // Carregar a imagem diretamente do drawable
+        val context = holder.itemView.context
+        val imageResId = context.resources.getIdentifier(recipe.image, "drawable", context.packageName)
+        holder.recipeImage.setImageResource(imageResId)
+
+        // Configurar o clique no item
         holder.itemView.setOnClickListener { onRecipeClick(recipe) }
     }
 
