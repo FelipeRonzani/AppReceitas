@@ -48,7 +48,6 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.recyclerview)
     implementation(libs.gson)
-    implementation(libs.glide)
     implementation(libs.material)
 }
 
